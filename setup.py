@@ -16,7 +16,7 @@ setuptools.setup(
         "Bug Tracker": "https://github.com/Mostafa-Samir/auto-batcher/issues",
     },
     packages=["auto_batcher"],
-    python_requires=">=3.6",
+    python_requires=">=3.5",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
