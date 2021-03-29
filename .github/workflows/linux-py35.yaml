@@ -18,7 +18,7 @@ jobs:
         platform: [ubuntu-latest, macos-latest, windows-latest]
         python-version: [3.5, 3.6]
 
-    runs-on: $ {{ matrix.platform }}
+    runs-on: ${{ matrix.platform }}
     
     steps:
       - uses: actions/checkout@v2
@@ -36,19 +36,19 @@ jobs:
         if: ${{ success() }}
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
-          auth: $ {{ secrets.GIST_ACCESS_TOKEN }}
+          auth: ${{ secrets.GIST_ACCESS_TOKEN }}
           gist_id: 556c4aad656a0203c20c136e23700915
-          filename: build-$ {{ matrix.platform }}-py${{ matrix.python-version }}.json
-          label: build [$ {{ matrix.platform }}, py${{ matrix.python-version }}]
+          filename: build-${{ matrix.platform }}-py${{ matrix.python-version }}.json
+          label: build [${{ matrix.platform }}, py${{ matrix.python-version }}]
           message: passing
           color: green
       - name: Create success badge
         if: ${{ failure() }}
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
-          auth: $ {{ secrets.GIST_ACCESS_TOKEN }}
+          auth: ${{ secrets.GIST_ACCESS_TOKEN }}
           gist_id: 556c4aad656a0203c20c136e23700915
-          filename: build-$ {{ matrix.platform }}-py${{ matrix.python-version }}.json
-          label: build [$ {{ matrix.platform }}, py${{ matrix.python-version }}]
+          filename: build-${{ matrix.platform }}-py${{ matrix.python-version }}.json
+          label: build [${{ matrix.platform }}, py${{ matrix.python-version }}]
           message: failing
           color: red
