@@ -1,4 +1,4 @@
-name: Build (Linux, Python3.5)
+name: Build (Linux, Python3+)
 
 on:
   push:
@@ -14,13 +14,16 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        python-version: [3.5, 3.6]
     
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Python 3.5
+      - name: Setup Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
-          python-version: 3.6
+          python-version: ${{ matrix.python-version }}
       - name: Install Package
         run: |
           python -m pip install --upgrade pip
