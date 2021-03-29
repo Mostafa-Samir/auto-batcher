@@ -42,7 +42,7 @@ jobs:
           label: build [${{ matrix.platform }}, py${{ matrix.python-version }}]
           message: passing
           color: green
-      - name: Create success badge
+      - name: Create fail badge
         if: ${{ failure() }}
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
