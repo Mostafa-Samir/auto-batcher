@@ -1,13 +1,11 @@
 """ An extension to multiprocessing Queue class that supports batched get and put
 """
 import queue
-import multiprocessing as mp
 from contextlib import suppress
 from typing import Any, Iterable, Union
-from multiprocessing.queues import Queue
 
 
-class BatchedQueue(Queue):
+class BatchedQueue(queue.Queue):
     """Extends the multiprocessing Queue class with `get_batch` and `put_batch` methods
     """
 
@@ -19,7 +17,7 @@ class BatchedQueue(Queue):
         maxsize : int, optional
             The maximum size of the queue, by default 0
         """
-        super().__init__(maxsize, ctx=mp.get_context())
+        super().__init__(maxsize)
 
     def get_batch(self, up_to: int, timeout: Union[None, float] = None) -> Iterable[Any]:
         """Retreives a batch of queued elements up to a given size
