@@ -37,7 +37,7 @@ jobs:
         run: nose2
 
       - name: Create success badge
-        if: ${{ success() }}
+        if: ${{ success() }} && endsWith(github.ref, "main")
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
           auth: ${{ secrets.GIST_ACCESS_TOKEN }}
@@ -48,7 +48,7 @@ jobs:
           color: green
 
       - name: Create fail badge
-        if: ${{ failure() }}
+        if: ${{ failure() }} && endsWith(github.ref, "main")
         uses: schneegans/dynamic-badges-action@v1.0.0
         with:
           auth: ${{ secrets.GIST_ACCESS_TOKEN }}
